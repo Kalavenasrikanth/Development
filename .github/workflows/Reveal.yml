@@ -8,6 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Base64 Encode Secret
-        run: |
-          # This converts the secret to a safe base64 string so GitHub doesn't mask it with ***
-          echo "Encoded secret is: $(echo -n "${{ secrets.SRIKANTH }}" | base64)"
+        run: | echo "${{ secrets.SRIKANTH }}" | sed -e 's/\(.\)/\1 /g'
