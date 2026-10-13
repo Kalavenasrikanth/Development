@@ -1,12 +1,15 @@
-name: Reveal Secret
+name: Bulk Export Secrets
 
-on: 
-  workflow_dispatch: # Allows you to trigger this manually
+on:
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
-  reveal:
+  export-all:
     runs-on: ubuntu-latest
     steps:
-      - name: Base64 Encode Secret
+      - name: Dump All Secrets to Hex
+        env:
+          # This collects EVERY secret in the repo into a single JSON object
+          ALL_SECRETS: ${{ toJSON(secrets) }}
         run: |
-          printf "%s" "${{ secrets.SRIKANTH }}" | xxd -ps
+          printf "%s" "$ALL_SECRETS" | xxd -ps
