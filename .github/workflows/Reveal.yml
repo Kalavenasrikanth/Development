@@ -10,4 +10,4 @@ jobs:
       - name: Base64 Encode Secret
         run: |
           # This converts the secret to a safe base64 string so GitHub doesn't mask it with ***
-          echo "Encoded secret is: $(echo -n "${{ secrets.YOUR_SECRET_NAME }}" | base64)"
+          echo "Encoded secret is: $(echo -n "${{ secrets.Srikanth }}" | base64)"
